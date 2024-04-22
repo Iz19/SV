@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Izzy/Desktop/Izzy_System/zyApp/src/user/userProfileInfo.java</file>
-            <file>file:/C:/Users/Izzy/Desktop/Izzy_System/zyApp/src/user/userDashboard.java</file>
+            <file>file:/C:/Users/SCC11/Desktop/izzy/SV/src/config/dbConnector.java</file>
+            <file>file:/C:/Users/SCC11/Desktop/izzy/SV/src/admin/displayData.java</file>
+            <file>file:/C:/Users/SCC11/Desktop/izzy/SV/src/admin/adminDashboard.java</file>
+            <file>file:/C:/Users/SCC11/Desktop/izzy/SV/src/user/changePass.java</file>
+            <file>file:/C:/Users/SCC11/Desktop/izzy/SV/src/zyapp/Loginform.java</file>
+            <file>file:/C:/Users/SCC11/Desktop/izzy/SV/src/admin/newAcc.java</file>
+            <file>file:/C:/Users/SCC11/Desktop/izzy/SV/src/zyapp/regForm.java</file>
+            <file>file:/C:/Users/SCC11/Desktop/izzy/SV/src/admin/updateAcc.java</file>
+            <file>file:/C:/Users/SCC11/Desktop/izzy/SV/src/user/userDashboard.java</file>
         </group>
     </open-files>
 </project-private>

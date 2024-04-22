@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import zyapp.Loginform;
 import zyapp.regForm;
+import static zyapp.regForm.hashPass;
 
 /**
  *
@@ -178,6 +179,7 @@ public boolean duplicateCheck(){
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void fnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnActionPerformed
@@ -201,26 +203,41 @@ public boolean duplicateCheck(){
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
   
-    if(fn.getText().isEmpty()|| ln.getText().isEmpty()||  em.getText().isEmpty()|| un.getText().isEmpty()
-             ||ps.getText().isEmpty()){
-        JOptionPane.showMessageDialog(null, "All fields are required!");
-    }else if(ps.getText().length()<8){
-        JOptionPane.showMessageDialog(null, "Password character should be 8 above!");
-        ps.setText("");
-    }else if(duplicateCheck()){
-        System.out.println("Duplicate Exist");
-    }else{
-        dbConnector dbc = new dbConnector();
+   
+        String pass = hashPass(ps.getText());
+       
+            if(fn.getText().isEmpty()
+                || ln.getText().isEmpty()
+                || em.getText().isEmpty()
+                || un.getText().isEmpty()
+                || ps.getText().isEmpty())
+            {
+            JOptionPane.showMessageDialog(null, "All Fields should be Filled");
+            }else if(ps.getText().length() < 8){
+            JOptionPane.showMessageDialog(null, "Minimum password should be above 8 character");
+            ps.setText("");  
            
-            if(dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, email, u_username, u_pass, u_type, stat) VALUES ('"+fn.getText()+"', '"+ln.getText()+"', '"+em.getText()+"', '"+un.getText()+"', '"+ps.getText()+"', '"+ut.getSelectedItem()+"', 'Pending')")){                                        
-                JOptionPane.showMessageDialog(null, "Registration Success!");
-                displayData dd = new displayData();
-                dd.setVisible(true);
-                this.dispose();
+            }else if(duplicateCheck()){
+                System.out.println("Duplicate Exist");
             }else{
-                JOptionPane.showMessageDialog(null, "Connection Error!");
+            dbConnector db = new dbConnector();
+
+                if(db.insertData("INSERT INTO tbl_user (u_fname, u_lname, email, u_username, u_pass, u_type, stat) "
+                    + "VALUES ('"+fn.getText()+"',"
+                    + " '"+ln.getText()+"',"
+                    + " '"+em.getText()+"', "
+                    + " '"+un.getText()+"', "
+                    + "'"+pass+"', "
+                    + "'"+ut.getSelectedItem()+"', 'Pending' ) ")){
+
+                    JOptionPane.showMessageDialog(null, "Inserted Successfully!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Connection Error!");
+                }
+                    displayData ua = new displayData();
+                    ua.setVisible(true);
+                    this.dispose();
             }
-    }   
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import user.userDashboard;
+import static zyapp.regForm.hashPass;
 
 
 
@@ -71,7 +72,7 @@ public class Loginform extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         user = new javax.swing.JTextField();
         Login = new javax.swing.JButton();
-        pass = new javax.swing.JPasswordField();
+        passs = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -113,10 +114,10 @@ public class Loginform extends javax.swing.JFrame {
         jPanel1.add(Login);
         Login.setBounds(280, 430, 110, 40);
 
-        pass.setBackground(new java.awt.Color(204, 204, 204));
-        pass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
-        jPanel1.add(pass);
-        pass.setBounds(200, 352, 270, 40);
+        passs.setBackground(new java.awt.Color(204, 204, 204));
+        passs.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
+        jPanel1.add(passs);
+        passs.setBounds(200, 352, 270, 40);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel2.setText("Don't have an Account?");
@@ -173,28 +174,30 @@ public class Loginform extends javax.swing.JFrame {
     }//GEN-LAST:event_userActionPerformed
 
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
-       
-        if(loginAcc(user.getText(), pass.getText())){
-            String username = user.getText();
-            if(checkAdmin(username)){
-                JOptionPane.showMessageDialog(null, "Log In As SAO In-Charge");
+      
+     
+        String pass = hashPass(passs.getText());
+        dbConnector connector = new dbConnector();  
+        if(loginAcc(user.getText(), pass)){
+            String userna = user.getText();
+            if(checkAdmin(userna)){
                 adminDashboard ads = new adminDashboard();
                 ads.adminName.setText("" +fullname);
                 ads.adminPosition.setText("" +type);
                 ads.setVisible(true);
                 this.dispose();
             }else{
-                JOptionPane.showMessageDialog(null, "Log In As Guidance Councilor");
-                userDashboard adss = new userDashboard();
-                adss.adminN.setText("" +fullname);
-                adss.adminP.setText("" +type);
-                adss.setVisible(true);
+                userDashboard usr = new userDashboard();
+                usr.adminN.setText("" +fullname);
+                usr.adminP.setText("" +type);
+                usr.setVisible(true);
                 this.dispose();
+
             }
             this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Log In Failed");        
-        }  
+        }
     }//GEN-LAST:event_LoginActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
@@ -251,7 +254,7 @@ public class Loginform extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField pass;
+    private javax.swing.JPasswordField passs;
     private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
 }

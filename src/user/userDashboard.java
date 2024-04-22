@@ -290,6 +290,7 @@ public class userDashboard extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
@@ -316,6 +317,7 @@ public class userDashboard extends javax.swing.JFrame {
         usi.u_email.setText(Loginform.emiel);
         usi.u_accountstat.setText(Loginform.status);
         usi.setVisible(true);
+        this. dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
     /**

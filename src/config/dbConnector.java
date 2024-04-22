@@ -62,7 +62,7 @@ public class dbConnector {
     public void deleteData(int id, String table){
 
         try{
-            PreparedStatement pst = connect.prepareStatement("DELETE FROM lmer_table WHERE lmer_ID=?");
+            PreparedStatement pst = connect.prepareStatement("DELETE FROM tbl_user WHERE u_id=?");
             pst.setInt( 1, id );
             int rowsDeleted = pst.executeUpdate();
                 if(rowsDeleted>0){

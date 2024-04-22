@@ -147,22 +147,22 @@ private void updatePassword(String newPassword) {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-    
-        String pass = hashPass(newPass.getText());
-        String orgPassw = orgPasswo.getText();
-        String newPassw = pass;
-        if (!orgPassw.equals(origPass)) {
-            JOptionPane.showMessageDialog(null, "Original password is incorrect.");
-            return;
-        }
-        updatePassword(newPassw);
-        JOptionPane.showMessageDialog(null, "Password updated successfully!.");
-        userDashboard u = new userDashboard();
-        u.setVisible(true);
-        this.dispose();
+            String pass = hashPass(newPass.getText()); 
+            String orig = hashPass(orgPasswo.getText()); 
+            String newPassw = pass; 
+            if (!orig.equals(origPass)) { 
+                JOptionPane.showMessageDialog(null, "Original password is incorrect.");
+                return;
+            } 
+            updatePassword(newPassw); 
+            JOptionPane.showMessageDialog(null, "Password updated successfully!.");
+            userDashboard u = new userDashboard();
+            u.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
